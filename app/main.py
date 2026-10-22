@@ -98,4 +98,8 @@ async def sync_trigger():
 
 
 STATIC_DIR = os.path.join(os.path.dirname(__file__), "..", "static")
-app.mount("/", StaticFiles(directory=STATIC_DIR, html=True), name="static")
+# On Vercel, vercel.json routes static assets directly (separate build
+# output) so this function's bundle may not include static/ at all --
+# only mount it when present (local dev, Railway, etc.).
+if os.path.isdir(STATIC_DIR):
+    app.mount("/", StaticFiles(directory=STATIC_DIR, html=True), name="static")

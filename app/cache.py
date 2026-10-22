@@ -4,10 +4,17 @@
 "explain" and "reading_list" -- without needing separate tables.
 """
 import json
+import os
 import sqlite3
 from pathlib import Path
 
-DB_PATH = Path(__file__).resolve().parent.parent / "data" / "cache.db"
+# Vercel's filesystem is read-only except /tmp, and /tmp doesn't persist
+# across invocations -- caching is best-effort there (see README). On a
+# normal host (Railway etc.) this just lives in data/cache.db as usual.
+DB_PATH = (
+    Path("/tmp/cache.db") if os.environ.get("VERCEL")
+    else Path(__file__).resolve().parent.parent / "data" / "cache.db"
+)
 
 
 def _connect() -> sqlite3.Connection:
