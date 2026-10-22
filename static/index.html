@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Comprehensive Maths Atlas — 13,448 Topics, Explained From Zero</title>
+<meta name="theme-color" content="#1b2b26" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<div class="chalk-dust" aria-hidden="true"></div>
+
+<header class="topbar">
+  <button id="home-btn" class="brand">
+    <span class="brand-mark">∑</span>
+    <span class="brand-text">
+      <span class="brand-title">Comprehensive Maths Atlas</span>
+      <span class="brand-sub">13,448 topics &middot; zero to mastery</span>
+    </span>
+  </button>
+
+  <div class="search-wrap">
+    <input id="search-input" type="text" placeholder="Search any topic&hellip; (e.g. bipartite graphs, Lebesgue measure)" autocomplete="off" />
+    <div id="search-results" class="search-results hidden"></div>
+  </div>
+
+  <button id="settings-btn" class="icon-btn" title="OpenRouter settings" aria-label="Settings">&#9881;</button>
+</header>
+
+<main class="main">
+  <div id="browse-view" class="view">
+    <nav id="breadcrumb" class="breadcrumb"></nav>
+    <div class="browse-head">
+      <h1 id="browse-title">Fields</h1>
+      <span id="browse-count" class="browse-count"></span>
+    </div>
+    <div id="topic-grid" class="topic-grid"></div>
+  </div>
+
+  <div id="detail-view" class="view hidden">
+    <nav id="detail-breadcrumb" class="breadcrumb"></nav>
+    <article id="detail-content" class="detail-content"></article>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span id="meta-line" class="meta-line"></span>
+    <div class="sync-widget">
+      <button id="sync-btn" class="sync-btn">&#8635; Sync with mathprobvault.com</button>
+      <span id="sync-msg" class="sync-msg"></span>
+    </div>
+  </div>
+</footer>
+
+<div id="settings-overlay" class="overlay hidden">
+  <div class="settings-panel">
+    <div class="settings-head">
+      <h3>OpenRouter settings</h3>
+      <button id="settings-close" class="icon-btn">&times;</button>
+    </div>
+    <p class="settings-hint">Paste your own OpenRouter API key to generate explain pages and reading lists. Stored only in your browser (localStorage) and sent directly with each request — never stored on this server.</p>
+    <label class="field-label" for="api-key-input">OpenRouter API key</label>
+    <input id="api-key-input" type="password" placeholder="sk-or-v1-&hellip;" autocomplete="off" />
+    <label class="field-label" for="model-select">Model</label>
+    <select id="model-select"></select>
+    <div class="settings-actions">
+      <button id="settings-save" class="btn-primary">Save</button>
+      <a href="https://openrouter.ai/keys" target="_blank" rel="noopener" class="settings-link">Get a key at openrouter.ai &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
