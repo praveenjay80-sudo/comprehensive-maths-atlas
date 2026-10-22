@@ -498,6 +498,8 @@ a { color: inherit; }
   margin-bottom: 10px;
 }
 .reading-item-title { font-weight: 600; }
+a.reading-item-title { color: var(--amber); text-decoration: none; }
+a.reading-item-title:hover { text-decoration: underline; }
 .reading-item-author { color: var(--chalk-faint); font-size: 12.5px; margin-left: 6px; }
 .reading-item-about { color: var(--chalk-dim); font-size: 13.5px; margin-top: 6px; line-height: 1.6; }
 .reading-item-why { color: var(--amber-dim); font-size: 12px; margin-top: 6px; font-style: italic; }

@@ -83,6 +83,7 @@ matching exactly this shape:
       "author": "author or institution",
       "format": "textbook chapter | monograph | paper | lecture notes | online course",
       "locator": "chapter/section/arXiv id if known, else empty string",
+      "url": "a direct link ONLY if you are genuinely confident it is correct -- a doi.org/<DOI> link for a paper with a known DOI, an arxiv.org/abs/<id> link for an arXiv paper, otherwise empty string",
       "about": "2-3 sentences on what this specific work covers",
       "why": "1 sentence on this work's role at this stage of learning the topic"
     }
@@ -92,6 +93,10 @@ matching exactly this shape:
 Rules:
 - Only cite real, verifiable, well-known works. Never invent a title, author, or edition.
 - Prefer works you have high confidence actually exist and match the stated author.
+- Never fabricate a DOI, arXiv id, or URL. A wrong link is worse than no link: only fill in "url" \
+when you are genuinely confident of the exact DOI/arXiv id, not merely that the paper likely has one. \
+Books and lecture notes usually don't have a DOI -- leave "url" empty for those unless you know a \
+specific stable link (e.g. the book's own arXiv preprint). When unsure in any way, leave "url" as "".
 - "Zero / Absolute beginner" should assume no background at all in this specific topic -- popular-level or first-contact material.
 - "Research / primary sources" should include the historically or technically primary sources where appropriate.
 - Produce 10 to 18 total reading entries across all five stages, at least one per stage.

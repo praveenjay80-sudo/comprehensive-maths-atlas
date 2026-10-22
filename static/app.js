@@ -344,14 +344,20 @@
       .map((s) => `
         <div class="reading-stage">
           <h3>${escapeHtml(s)}</h3>
-          ${byStage[s].map((r) => `
+          ${byStage[s].map((r) => {
+            const hasLink = typeof r.url === "string" && /^https?:\/\//.test(r.url);
+            const titleHtml = hasLink
+              ? `<a class="reading-item-title" href="${escapeAttr(r.url)}" target="_blank" rel="noopener">${escapeHtml(r.title)} &#8599;</a>`
+              : `<span class="reading-item-title">${escapeHtml(r.title)}</span>`;
+            return `
             <div class="reading-item">
-              <span class="reading-item-title">${escapeHtml(r.title)}</span>
+              ${titleHtml}
               <span class="reading-item-author">${escapeHtml(r.author)}</span>
               <div class="reading-item-about">${escapeHtml(r.about)}</div>
               <div class="reading-item-why">${escapeHtml(r.why)}</div>
             </div>
-          `).join("")}
+          `;
+          }).join("")}
         </div>
       `).join("");
 
