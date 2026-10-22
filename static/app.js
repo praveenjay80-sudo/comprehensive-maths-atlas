@@ -101,15 +101,18 @@
     const roots = await api("/api/roots");
     browseCount.textContent = `${roots.length} top-level fields`;
     topicGrid.innerHTML = roots.map(topicCardHtml).join("");
-    bindGridClicks();
     window.scrollTo(0, 0);
   }
 
-  function bindGridClicks() {
-    topicGrid.querySelectorAll(".topic-card").forEach((card) => {
-      card.onclick = () => navigateTo(card.dataset.id);
-    });
-  }
+  // Single delegated listener instead of rebinding onclick after every
+  // render -- topic cards and related chips get re-created on every
+  // navigation/tab switch, so per-element binding silently drops handlers
+  // on freshly-inserted nodes (that was the "clicking past level 1 does
+  // nothing" bug).
+  document.addEventListener("click", (e) => {
+    const card = e.target.closest(".topic-card, .chip");
+    if (card && card.dataset.id) navigateTo(card.dataset.id);
+  });
 
   async function navigateTo(topicId) {
     searchResults.classList.add("hidden");
@@ -169,10 +172,6 @@
       </div>
     `;
 
-    bindGridClicks();
-    detailContent.querySelectorAll(".chip").forEach((chip) => {
-      chip.onclick = () => navigateTo(chip.dataset.id);
-    });
     detailContent.querySelectorAll(".tab-btn").forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.tab === state.activeTab);
       btn.onclick = () => { state.activeTab = btn.dataset.tab; renderDetail(); };
